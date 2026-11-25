@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CyberHash Toolkit — Hash Generator &amp; Identifier</title>
+<meta name="description" content="Professional hash generator, identifier, and analysis toolkit for security professionals. Built for defenders, not attackers." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<!-- ============ SKIP LINK ============ -->
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#home" class="navbar__brand">
+      <span class="navbar__brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2 3 6v6c0 5.2 3.6 9.7 9 11 5.4-1.3 9-5.8 9-11V6l-9-4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m8.5 12 2.3 2.3L15.8 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="navbar__brand-text">CyberHash<span class="navbar__brand-accent">Toolkit</span></span>
+    </a>
+
+    <nav class="navbar__links" id="navLinks" aria-label="Primary">
+      <a href="#home" class="navlink">Home</a>
+      <a href="#generator" class="navlink">Hash Generator</a>
+      <a href="#identifier" class="navlink">Hash Identifier</a>
+      <a href="#cracker" class="navlink">Hash Cracker</a>
+      <a href="#history" class="navlink">History</a>
+      <a href="#about" class="navlink">About</a>
+      <a href="#documentation" class="navlink">Docs</a>
+      <a href="#contact" class="navlink">Contact</a>
+    </nav>
+
+    <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Toggle navigation menu">
+      <span class="navbar__toggle-bar"></span>
+      <span class="navbar__toggle-bar"></span>
+      <span class="navbar__toggle-bar"></span>
+    </button>
+  </div>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="#home" class="mobile-drawer__link">Home</a>
+    <a href="#generator" class="mobile-drawer__link">Hash Generator</a>
+    <a href="#identifier" class="mobile-drawer__link">Hash Identifier</a>
+    <a href="#cracker" class="mobile-drawer__link">Hash Cracker</a>
+    <a href="#history" class="mobile-drawer__link">History</a>
+    <a href="#about" class="mobile-drawer__link">About</a>
+    <a href="#documentation" class="mobile-drawer__link">Docs</a>
+    <a href="#contact" class="mobile-drawer__link">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <span class="badge-chip">
+        <span class="badge-chip__dot" aria-hidden="true"></span>
+        Built for defenders, not attackers
+      </span>
+      <h1 class="hero__title">CyberHash Toolkit</h1>
+      <p class="hero__subtitle">Professional Hash Generator &amp; Hash Identifier for Security Professionals.</p>
+
+      <div class="hero__actions">
+        <a href="#generator" class="btn btn--primary">Launch Tool</a>
+        <a href="#documentation" class="btn btn--secondary">Documentation</a>
+      </div>
+
+      <div class="stats" role="list">
+        <div class="stat" role="listitem">
+          <span class="stat__value">10</span>
+          <span class="stat__label">Hash Algorithms</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__value">13+</span>
+          <span class="stat__label">Detectable Types</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__value">100%</span>
+          <span class="stat__label">Client Privacy*</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__value">0</span>
+          <span class="stat__label">Data Sold</span>
+        </div>
+      </div>
+      <p class="hero__note">*History is stored locally in the app database for your convenience only.</p>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 01 — HASH GENERATOR ============ -->
+  <section class="module" id="generator">
+    <div class="container">
+      <div class="module__head">
+        <span class="module__number">01 — Module</span>
+        <h2 class="module__title">Hash Generator</h2>
+        <p class="module__desc">Generate cryptographic hashes from plain text or a file, instantly.</p>
+      </div>
+
+      <!-- A) Plain text -->
+      <div class="card tool-card">
+        <div class="tool-card__header">
+          <h3>Plain Text Hash Generator</h3>
+          <label class="toggle">
+            <input type="checkbox" id="liveHashToggle" />
+            <span class="toggle__track"><span class="toggle__thumb"></span></span>
+            <span class="toggle__label">Live generation</span>
+          </label>
+        </div>
+
+        <label class="field-label" for="hashTextInput">Text to hash</label>
+        <textarea id="hashTextInput" class="input textarea" rows="5" placeholder="Type or paste text here…"></textarea>
+
+        <div class="field-label" style="margin-top:1.25rem;">Algorithms</div>
+        <div class="algo-grid" id="algoGrid" role="group" aria-label="Select algorithms to generate">
+          <!-- populated by JS -->
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="generateHashBtn">Generate Hash</button>
+          <button class="btn btn--ghost" id="clearHashBtn">Clear</button>
+          <button class="btn btn--ghost" id="copyAllHashBtn">Copy All</button>
+          <button class="btn btn--ghost" id="downloadHashBtn">Download TXT</button>
+        </div>
+
+        <div class="result-panel" id="hashResultPanel" hidden>
+          <div class="result-panel__list" id="hashResultList"></div>
+        </div>
+        <p class="empty-state" id="hashEmptyState">No hashes generated yet — enter text above and press Generate Hash.</p>
+      </div>
+
+      <!-- B) File hash -->
+      <div class="card tool-card">
+        <div class="tool-card__header">
+          <h3>File Hash Generator</h3>
+          <span class="chip chip--muted">Max 50 MB</span>
+        </div>
+
+        <div class="dropzone" id="fileDropzone" tabindex="0" role="button" aria-label="Drag and drop a file, or click to browse">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><strong>Drag &amp; drop a file</strong>, or click to browse</p>
+          <p class="dropzone__hint">Maximum file size: 50 MB</p>
+          <input type="file" id="fileInput" hidden />
+        </div>
+
+        <div class="file-info" id="fileInfo" hidden>
+          <span class="file-info__name" id="fileInfoName"></span>
+          <span class="file-info__size" id="fileInfoSize"></span>
+          <button class="btn btn--ghost btn--sm" id="fileRemoveBtn">Remove</button>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="hashFileBtn" disabled>Calculate File Hash</button>
+        </div>
+
+        <div class="result-panel" id="fileResultPanel" hidden>
+          <div class="result-panel__list" id="fileResultList"></div>
+          <div class="btn-row">
+            <button class="btn btn--ghost btn--sm" id="copyFileHashBtn">Copy All</button>
+            <button class="btn btn--ghost btn--sm" id="downloadFileHashBtn">Download TXT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 02 — HASH IDENTIFIER ============ -->
+  <section class="module module--alt" id="identifier">
+    <div class="container">
+      <div class="module__head">
+        <span class="module__number">02 — Module</span>
+        <h2 class="module__title">Hash Identifier</h2>
+        <p class="module__desc">Paste any hash and get a best-guess algorithm identification with a confidence score.</p>
+      </div>
+
+      <div class="card tool-card">
+        <h3>Identify a Hash</h3>
+        <label class="field-label" for="identifyInput">Paste any hash</label>
+        <input class="input" id="identifyInput" type="text" placeholder="e.g. 5d41402abc4b2a76b9719d911017c592" autocomplete="off" spellcheck="false" />
+        <div class="btn-row">
+          <button class="btn btn--primary" id="identifyBtn">Identify</button>
+        </div>
+
+        <div class="quick-tests">
+          <span class="field-label">Supported detection</span>
+          <div class="chip-row">
+            <span class="chip">MD5</span><span class="chip">NTLM</span><span class="chip">LM</span>
+            <span class="chip">SHA1</span><span class="chip">SHA224</span><span class="chip">SHA256</span>
+            <span class="chip">SHA384</span><span class="chip">SHA512</span><span class="chip">SHA3</span>
+            <span class="chip">RIPEMD160</span><span class="chip">Whirlpool</span><span class="chip">BLAKE2</span>
+            <span class="chip">Base64</span><span class="chip">Unknown</span>
+          </div>
+        </div>
+        <p class="empty-state" id="identifyEmptyState">Results will appear here.</p>
+
+        <div class="result-panel" id="identifyResultPanel" hidden>
+          <div class="identify-result">
+            <div class="identify-result__top">
+              <div>
+                <span class="field-label">Detected algorithm</span>
+                <div class="identify-result__algo" id="identifyAlgo">—</div>
+              </div>
+              <div class="confidence" id="identifyConfidenceWrap">
+                <span class="field-label">Confidence</span>
+                <div class="confidence__bar"><div class="confidence__fill" id="identifyConfidenceFill"></div></div>
+                <span class="confidence__value" id="identifyConfidenceValue">0%</span>
+              </div>
+            </div>
+            <div class="identify-result__meta">
+              <div><span class="field-label">Hash length</span><div id="identifyLength" class="mono">—</div></div>
+              <div><span class="field-label">Character set</span><div id="identifyCharset" class="mono">—</div></div>
+              <div><span class="field-label">Possible formats</span><div class="chip-row" id="identifyPossible"></div></div>
+            </div>
+            <div class="warning-banner" id="identifyWarning" hidden></div>
+            <div class="reasoning">
+              <span class="field-label">Detection indicators</span>
+              <ul id="identifyReasoning"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hash comparison -->
+      <div class="card tool-card">
+        <h3>Hash Comparison</h3>
+        <div class="grid-2">
+          <div>
+            <label class="field-label" for="compareFirst">First hash</label>
+            <input class="input mono" id="compareFirst" type="text" spellcheck="false" />
+          </div>
+          <div>
+            <label class="field-label" for="compareSecond">Second hash</label>
+            <input class="input mono" id="compareSecond" type="text" spellcheck="false" />
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--primary" id="compareBtn">Compare</button>
+        </div>
+        <div class="result-panel" id="compareResultPanel" hidden>
+          <div class="status-line">
+            <span class="status-badge" id="compareStatusBadge">—</span>
+            <button class="btn btn--ghost btn--sm" id="copyCompareBtn">Copy result</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hash Decoder -->
+      <div class="card tool-card">
+        <h3>Hash Decoder</h3>
+        <p class="tool-card__subtitle">Master Security Wordlist</p>
+        <p class="tool-card__desc">Fast dictionary lookup against built-in security wordlists for defensive audit and educational triage.</p>
+
+        <label class="field-label" for="decodeInput">Paste a hash to check</label>
+        <input class="input mono" id="decodeInput" type="text" spellcheck="false" />
+
+        <div class="quick-tests">
+          <span class="field-label">Quick tests</span>
+          <div class="quick-tests__row" id="decodeQuickTests"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="decodeBtn">Decode Hash</button>
+        </div>
+
+        <div class="result-panel" id="decodeResultPanel" hidden></div>
+      </div>
+
+      <!-- Encoding Decoder -->
+      <div class="card tool-card">
+        <h3>Encoding Decoder</h3>
+        <p class="tool-card__desc">For reversible encodings such as Base64, Hex, URL encoding, and ROT13. Encoding is reversible and is <strong>not</strong> cryptographic hashing.</p>
+
+        <label class="field-label" for="encodingSelect">Encoding</label>
+        <select class="input select" id="encodingSelect">
+          <option>Base64</option>
+          <option>Hex</option>
+          <option>URL Encoding</option>
+          <option>ROT13</option>
+        </select>
+
+        <div class="grid-2" style="margin-top:1rem;">
+          <div>
+            <label class="field-label" for="encodingInput">Input</label>
+            <textarea class="input textarea" id="encodingInput" rows="4"></textarea>
+          </div>
+          <div>
+            <label class="field-label" for="encodingOutput">Output</label>
+            <textarea class="input textarea mono" id="encodingOutput" rows="4" readonly></textarea>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="encodeBtn">Encode</button>
+          <button class="btn btn--secondary" id="decodeEncBtn">Decode</button>
+          <button class="btn btn--ghost" id="copyEncodingOutputBtn">Copy Output</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 03 — HASH CRACKER & WORDLISTS ============ -->
+  <section class="module" id="cracker">
+    <div class="container">
+      <div class="module__head">
+        <span class="module__number">03 — Module</span>
+        <h2 class="module__title">Hash Cracker &amp; Wordlists</h2>
+        <p class="module__desc">Educational dictionary and bounded search demonstrations.</p>
+      </div>
+
+      <!-- Wordlist attack -->
+      <div class="card tool-card">
+        <div class="tool-card__header">
+          <h3>Wordlist Attack</h3>
+          <span class="chip chip--muted">Built-in presets loaded</span>
+        </div>
+        <p class="tool-card__desc">Select a curated cybersecurity wordlist, upload a custom text file, or type custom candidate lines below.</p>
+
+        <div class="grid-2">
+          <div>
+            <label class="field-label" for="wordlistSource">Wordlist source</label>
+            <select class="input select" id="wordlistSource">
+              <option value="common-passwords">Top Common Passwords (curated)</option>
+              <option value="default-credentials">Default &amp; Device Credentials</option>
+              <option value="numeric-pins">Common Numeric PINs (4-digit, 6-digit, years)</option>
+              <option value="standard-usernames">Standard Usernames &amp; Roles</option>
+              <option value="ctf-keywords">CTF &amp; Security Keywords</option>
+              <option value="keyboard-patterns">Keyboard Patterns</option>
+              <option value="years-1990-2030">Years 1990–2030</option>
+              <option value="master-combined">Master Combined List (All Presets)</option>
+              <option value="custom">Custom / Uploaded Wordlist</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="wordlistAlgo">Algorithm</label>
+            <select class="input select" id="wordlistAlgo">
+              <option>MD5</option>
+              <option>SHA1</option>
+              <option>SHA256</option>
+              <option>SHA512</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="field-label" for="wordlistTarget" style="margin-top:1rem;">Target hash</label>
+        <input class="input mono" id="wordlistTarget" type="text" spellcheck="false" />
+
+        <label class="field-label" for="wordlistEditor" style="margin-top:1rem;">Candidate list / editor</label>
+        <textarea class="input textarea mono" id="wordlistEditor" rows="5" placeholder="One candidate per line…"></textarea>
+
+        <div class="btn-row">
+          <button class="btn btn--ghost btn--sm" id="loadPresetBtn">Load preset words</button>
+          <label class="btn btn--ghost btn--sm file-btn">
+            Upload .txt
+            <input type="file" id="wordlistUpload" accept=".txt" hidden />
+          </label>
+        </div>
+
+        <div class="quick-tests">
+          <span class="field-label">Quick tests</span>
+          <div class="quick-tests__row" id="wordlistQuickTests"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="runWordlistBtn">Run Wordlist Attack</button>
+        </div>
+
+        <div class="result-panel" id="wordlistResultPanel" hidden></div>
+      </div>
+
+      <!-- Brute force -->
+      <div class="card tool-card">
+        <div class="tool-card__header">
+          <h3>Brute-Force Demo</h3>
+          <span class="chip chip--warning">Bounded &amp; educational</span>
+        </div>
+        <p class="tool-card__desc">Tightly bounded search with maximum length 5 and a capped search space.</p>
+
+        <div class="grid-2">
+          <div>
+            <label class="field-label" for="bruteTarget">Target hash</label>
+            <input class="input mono" id="bruteTarget" type="text" spellcheck="false" />
+          </div>
+          <div>
+            <label class="field-label" for="bruteAlgo">Algorithm</label>
+            <select class="input select" id="bruteAlgo">
+              <option>MD5</option>
+              <option>SHA1</option>
+              <option>SHA224</option>
+              <option>SHA256</option>
+              <option>SHA384</option>
+              <option>SHA512</option>
+              <option>SHA3-256</option>
+              <option>SHA3-512</option>
+              <option>BLAKE2b</option>
+              <option>BLAKE2s</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem;">
+          <div>
+            <label class="field-label" for="bruteMaxLength">Max length (≤ 5)</label>
+            <input class="input" id="bruteMaxLength" type="number" min="1" max="5" value="4" />
+          </div>
+          <div>
+            <label class="field-label" for="bruteCharset">Charset</label>
+            <input class="input mono" id="bruteCharset" type="text" value="abcdefghijklmnopqrstuvwxyz0123456789" />
+          </div>
+        </div>
+
+        <div class="quick-tests">
+          <span class="field-label">Quick tests</span>
+          <div class="quick-tests__row" id="bruteQuickTests"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" id="runBruteBtn">Run Brute-Force</button>
+        </div>
+
+        <div class="result-panel" id="bruteResultPanel" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 04 — HASH HISTORY ============ -->
+  <section class="module module--alt" id="history">
+    <div class="container">
+      <div class="module__head">
+        <span class="module__number">04 — Module</span>
+        <h2 class="module__title">Hash History</h2>
+        <p class="module__desc">Recent operations performed in this app, stored locally in the app database.</p>
+      </div>
+
+      <div class="card">
+        <div class="history-controls">
+          <input class="input" id="historySearch" type="text" placeholder="Search history…" />
+          <div class="btn-row btn-row--tight">
+            <button class="btn btn--ghost btn--sm" id="refreshHistoryBtn">Refresh</button>
+            <button class="btn btn--danger btn--sm" id="clearHistoryBtn">Clear History</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Operation</th>
+                <th>Algorithm</th>
+                <th>Input Type</th>
+                <th>Result / Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+        </div>
+        <p class="empty-state" id="historyEmptyState">No history yet — actions you perform will appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="module" id="about">
+    <div class="container">
+      <div class="module__head">
+        <h2 class="module__title">About This Project</h2>
+      </div>
+      <div class="card about-grid">
+        <div class="about-block">
+          <h3>Purpose</h3>
+          <p>CyberHash Toolkit is a learning-focused utility for generating and identifying cryptographic hashes, built to help students and security practitioners understand how hashing works in practice.</p>
+        </div>
+        <div class="about-block">
+          <h3>Educational use</h3>
+          <p>Every module demonstrates real concepts such as integrity verification, hash identification heuristics, and safe user input handling.</p>
+        </div>
+        <div class="about-block">
+          <h3>Defensive security focus</h3>
+          <ul class="about-list">
+            <li>File integrity</li>
+            <li>Hash format identification</li>
+            <li>Cybersecurity learning</li>
+            <li>Common algorithm fingerprints</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOCS ============ -->
+  <section class="module module--alt" id="documentation">
+    <div class="container">
+      <div class="module__head">
+        <h2 class="module__title">Understanding Hashing</h2>
+      </div>
+
+      <div class="docs-accordion" id="docsAccordion">
+
+        <details class="docs-item" open>
+          <summary>What is Hashing?</summary>
+          <div class="docs-item__body">
+            <ul>
+              <li>A one-way transformation: practical to compute, impractical to reverse.</li>
+              <li>Produces a fixed-length digest regardless of input size.</li>
+              <li>The same input always produces the same output.</li>
+              <li>A small change to the input produces a completely different digest (the avalanche effect).</li>
+              <li>Practically irreversible — you cannot recover the original input from the digest alone.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="docs-item" open>
+          <summary>Hashing vs Encryption vs Encoding</summary>
+          <div class="docs-item__body">
+            <p><strong>Hashing</strong> is one-way and produces a fixed-length digest used for verification — it cannot be reversed.</p>
+            <p><strong>Encryption</strong> is two-way: data is transformed with a key and can be decrypted back to the original with the correct key.</p>
+            <p><strong>Encoding</strong> (Base64, Hex, URL, ROT13) is a reversible format transformation with no security purpose — anyone can decode it without a key.</p>
+          </div>
+        </details>
+
+        <details class="docs-item" open>
+          <summary>Why Hashes Are Used</summary>
+          <div class="docs-item__body">
+            <ul>
+              <li>File integrity verification</li>
+              <li>Duplicate detection</li>
+              <li>Password verification (with proper salting/KDFs)</li>
+              <li>Digital signatures</li>
+              <li>Blockchain data structures</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="docs-item" open>
+          <summary>Common Algorithms</summary>
+          <div class="docs-item__body">
+            <div class="chip-row" style="margin-bottom:0.9rem;">
+              <span class="chip">MD5</span><span class="chip">SHA1</span><span class="chip">SHA-2</span>
+              <span class="chip">SHA-3</span><span class="chip">BLAKE2</span><span class="chip">bcrypt</span>
+              <span class="chip">scrypt</span><span class="chip">Argon2</span>
+            </div>
+            <p>MD5 and SHA1 are fast but considered broken for security-critical use due to collision attacks — they still work fine for non-security checksums. The SHA-2 family (SHA224/256/384/512) and SHA-3 family are today's standards for integrity and digital signatures. BLAKE2 offers SHA-3-level security with better speed. For passwords specifically, dedicated slow algorithms like bcrypt, scrypt, or Argon2 should be used instead of general-purpose hash functions.</p>
+          </div>
+        </details>
+
+        <details class="docs-item" open>
+          <summary>Real-World Examples</summary>
+          <div class="docs-item__body">
+            <ul>
+              <li>Software checksum verification for downloads</li>
+              <li>Git's content-addressed object storage</li>
+              <li>Digital forensics and evidence-integrity chains</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="docs-item" open>
+          <summary>Best Practices</summary>
+          <div class="docs-item__body">
+            <ul>
+              <li>Do not use raw MD5/SHA1 for password storage.</li>
+              <li>Use salted password hashing / key-derivation functions (bcrypt, scrypt, Argon2).</li>
+              <li>Prefer SHA-256 or stronger for integrity verification.</li>
+              <li>Use constant-time comparison in security-sensitive applications.</li>
+            </ul>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="module" id="contact">
+    <div class="container">
+      <div class="module__head">
+        <h2 class="module__title">Get in Touch</h2>
+        <p class="module__desc">Questions, feedback, or ideas for new detection heuristics? Reach out.</p>
+      </div>
+      <div class="card contact-card">
+        <div class="contact-card__buttons">
+          <a class="btn btn--secondary" href="https://github.com/your-username" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.9-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+          <a class="btn btn--secondary" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.5 8.65 22 11 22 14.15V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.07 0-2.39 1.62-2.39 3.28V21h-4V9Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn--secondary" href="mailto:contact@cyberhashtoolkit.dev">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M3 5h18v14H3V5Zm0 0 9 7 9-7"/></svg>
+            contact@cyberhashtoolkit.dev
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>CyberHash Toolkit — built for cybersecurity education and defensive security.</p>
+    <p class="footer__meta">Version 1.0.0 · MIT License · <a href="#documentation">Docs</a></p>
+  </div>
+</footer>
+
+<!-- Toast container -->
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+<script src="scripts/api.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
